@@ -32,7 +32,7 @@ export default function App() {
       title: "Painless RCT",
       subtitle: "Root Canal Treatment",
       description: "Advanced rotary endodontics ensuring your procedure is fast, effective, and completely painless.",
-      imageUrl: "https://images.unsplash.com/photo-1629471110022-3cd221081681?q=80&w=1200&auto=format&fit=crop",
+      imageUrl: "/RCT.jpg",
       tag: "Specialty"
     },
     {
