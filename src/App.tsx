@@ -20,6 +20,8 @@ import {
   Award
 } from "lucide-react";
 import { useState } from "react";
+import rctImg from "./assets/RCT.jpg";
+import implantImg from "./assets/implant.jpg";
 
 const BRAND_TEAL = "#004D4D";
 const WHATSAPP_NUMBER = "919990078009"; // Placeholder for user replacement
@@ -32,14 +34,14 @@ export default function App() {
       title: "Painless RCT",
       subtitle: "Root Canal Treatment",
       description: "Advanced rotary endodontics ensuring your procedure is fast, effective, and completely painless.",
-      imageUrl: "RCT.jpg",
+      imageUrl: rctImg,
       tag: "Specialty"
     },
     {
       title: "Dental Implants",
       subtitle: "Permanent Restoration",
       description: "High-grade titanium implants that look, feel, and function exactly like your natural teeth.",
-      imageUrl: "implant.jpg",
+      imageUrl: implantImg,
       tag: "Permanent"
     },
     {
