@@ -32,14 +32,14 @@ export default function App() {
       title: "Painless RCT",
       subtitle: "Root Canal Treatment",
       description: "Advanced rotary endodontics ensuring your procedure is fast, effective, and completely painless.",
-      imageUrl: "/RCT.jpg",
+      imageUrl: "RCT.jpg",
       tag: "Specialty"
     },
     {
       title: "Dental Implants",
       subtitle: "Permanent Restoration",
       description: "High-grade titanium implants that look, feel, and function exactly like your natural teeth.",
-      imageUrl: "/implant.jpg",
+      imageUrl: "implant.jpg",
       tag: "Permanent"
     },
     {
