@@ -39,7 +39,7 @@ export default function App() {
       title: "Dental Implants",
       subtitle: "Permanent Restoration",
       description: "High-grade titanium implants that look, feel, and function exactly like your natural teeth.",
-      imageUrl: "https://images.unsplash.com/photo-1533221216134-c4309747fda3?q=80&w=1200&auto=format&fit=crop",
+      imageUrl: "/implant.jpg",
       tag: "Permanent"
     },
     {
