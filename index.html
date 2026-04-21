@@ -1,15 +1,350 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Helix Dent | Dental Surgeon in Uttam Nagar, Delhi | Painless RCT & Implants</title>
-    <meta name="description" content="Visit Dr. Abhishek Arora at Helix Dent for specialized dental care in Chanakya Place, Uttam Nagar. Private, single-chair practice specializing in Painless RCT, Dental Implants, and Aesthetic Fillings.">
-    <meta name="keywords" content="Helix Dent, Dental Surgeon Uttam Nagar, Dentist Chanakya Place, Painless RCT Delhi, Dental Implants Uttam Nagar, Dr. Abhishek Arora BDS">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helix Dent | Dr. Abhishek Arora | Luxury Dental Excellence</title>
+    <meta name="description" content="Premium dental care in Uttam Nagar by Dr. Abhishek Arora. Specializing in Painless RCT, Implants and Aesthetic Dentistry.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Animation on Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            teal: '#0D9488',
+                            gold: '#B45309',
+                            cream: '#F5F2ED',
+                            silver: '#F8FAFC',
+                            ink: '#0F172A'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'luxury': '0 20px 50px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .luxury-gradient {
+            background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+        }
+
+        .gold-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #B45309, transparent);
+            width: 100%;
+        }
+        
+        body {
+            background-color: #F8FAFC;
+        }
+    </style>
+</head>
+<body class="font-sans text-brand-ink antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-brand-teal rounded-xl flex items-center justify-center">
+                    <i data-lucide="shield-check" class="text-white w-6 h-6"></i>
+                </div>
+                <span class="text-2xl font-serif font-bold tracking-tight text-brand-teal uppercase">Helix Dent</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#services" class="text-sm font-medium hover:text-brand-teal transition-colors uppercase tracking-widest">Services</a>
+                <a href="#about" class="text-sm font-medium hover:text-brand-teal transition-colors uppercase tracking-widest">The Surgeon</a>
+                <a href="tel:+919811000000" class="px-6 py-2 bg-brand-teal text-white rounded-full text-sm font-medium hover:bg-brand-teal/90 transition-all shadow-sm">
+                    Book Consultation
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-40 pb-24 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <span class="inline-block py-1 px-4 bg-brand-teal/10 text-brand-teal rounded-full text-xs font-bold uppercase tracking-[0.2em] mb-6">
+                    Established Excellence
+                </span>
+                <h1 class="text-6xl md:text-8xl font-serif leading-[1.1] mb-8 text-slate-900 italic">
+                    Precision care.<br/>
+                    <span class="text-brand-teal not-italic font-bold">Absolute comfort.</span>
+                </h1>
+                <p class="text-xl text-slate-600 mb-10 max-w-lg leading-relaxed">
+                    Elevating dentistry in Uttam Nagar. Experience world-class treatments in a private, patient-centric environment designed for your serenity.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#services" class="px-8 py-4 bg-brand-ink text-white rounded-2xl font-medium hover:bg-slate-800 transition-all flex items-center justify-center gap-2">
+                        View Specialized Services
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#about" class="px-8 py-4 border border-slate-200 rounded-2xl font-medium hover:bg-white transition-all text-center">
+                        Meet Dr. Arora
+                    </a>
+                </div>
+            </div>
+            
+            <div class="relative" data-aos="zoom-in" data-aos-delay="200">
+                <div class="aspect-[4/5] bg-brand-silver rounded-[3.5rem] overflow-hidden shadow-luxury relative z-10 border-[12px] border-white">
+                    <img 
+                        src="doctor.jpg" 
+                        alt="Dr. Abhishek Arora" 
+                        class="w-full h-full object-cover"
+                        id="hero-image"
+                    >
+                </div>
+                <!-- Decorative elements -->
+                <div class="absolute -top-12 -right-12 w-64 h-64 bg-brand-teal/10 rounded-full blur-[100px] -z-10"></div>
+                <div class="absolute -bottom-12 -left-12 w-64 h-64 bg-brand-gold/10 rounded-full blur-[100px] -z-10"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-32 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-24" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-serif italic mb-4">Curated Treatments</h2>
+                <div class="flex items-center justify-center gap-4">
+                    <div class="h-[1px] w-12 bg-slate-200"></div>
+                    <span class="text-brand-gold font-medium uppercase tracking-[0.3em] text-xs">Aesthetic & Clinical Excellence</span>
+                    <div class="h-[1px] w-12 bg-slate-200"></div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="group" data-aos="fade-up" data-aos-delay="0">
+                    <div class="bg-brand-silver p-4 rounded-[2.5rem] transition-all hover:bg-white hover:shadow-luxury border border-transparent hover:border-slate-100">
+                        <div class="aspect-square rounded-[2rem] overflow-hidden mb-8 relative">
+                            <img src="RCT.jpg" alt="Painless RCT" class="w-full h-full object-cover transition-transform group-hover:scale-105 duration-700" id="service-1-img">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-brand-teal text-white px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Specialized</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold mb-3 italic px-2">Painless RCT</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed px-2 mb-4">
+                            Precision rotary endodontics designed for speed, comfort, and absolute preservation of natural teeth.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-brand-silver p-4 rounded-[2.5rem] transition-all hover:bg-white hover:shadow-luxury border border-transparent hover:border-slate-100">
+                        <div class="aspect-square rounded-[2rem] overflow-hidden mb-8 relative">
+                            <img src="implant.jpg" alt="Dental Implants" class="w-full h-full object-cover transition-transform group-hover:scale-105 duration-700" id="service-2-img">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-brand-gold text-white px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Advanced</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold mb-3 italic px-2">Dental Implants</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed px-2 mb-4">
+                            Premium titanium restorative systems providing a functional foundation that replicates your natural smile.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group" data-aos="fade-up" data-aos-delay="200">
+                   <div class="bg-brand-silver p-4 rounded-[2.5rem] transition-all hover:bg-white hover:shadow-luxury border border-transparent hover:border-slate-100">
+                        <div class="aspect-square rounded-[2rem] overflow-hidden mb-8 relative">
+                            <img src="fillings.jpg" alt="Aesthetic Fillings" class="w-full h-full object-cover transition-transform group-hover:scale-105 duration-700" id="service-3-img">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-brand-teal text-white px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Cosmetic</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold mb-3 italic px-2">Aesthetic Fillings</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed px-2 mb-4">
+                            Biocompatible composite resins that seamlessly blend with your enamel for invisible, durable protection.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clinic Section -->
+    <section id="about" class="py-32 px-6 bg-brand-silver">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-20">
+            <div class="w-full md:w-1/2" data-aos="fade-right">
+                <div class="relative">
+                    <div class="aspect-square rounded-[4rem] overflow-hidden border-[15px] border-white shadow-luxury">
+                        <img src="clinic.jpg" alt="Clinic Environment" class="w-full h-full object-cover" id="clinic-img">
+                    </div>
+                    <div class="absolute -bottom-10 -right-10 bg-white p-8 rounded-[2rem] shadow-xl max-w-[240px]" data-aos="fade-up" data-aos-delay="400">
+                        <i data-lucide="sparkles" class="w-8 h-8 text-brand-gold mb-4"></i>
+                        <h4 class="font-serif font-bold italic text-lg mb-2 text-brand-gold underline decoration-gold/30">The Single Chair Promise</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Dedicated focus on one patient at a time for uncompromised safety and attention.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="w-full md:w-1/2" data-aos="fade-left">
+                <span class="text-brand-teal font-bold uppercase tracking-widest text-xs mb-4 inline-block">The Practice</span>
+                <h2 class="text-5xl font-serif italic mb-8">Modern Science in a Traditional Setting.</h2>
+                <p class="text-slate-600 mb-8 leading-relaxed">
+                    Dr. Abhishek Arora (BDS) founded Helix Dent with a singular vision: to bring ethical, hospital-grade dental care to the community of Chanakya Place, Uttam Nagar.
+                </p>
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm border border-slate-100">
+                            <i data-lucide="check" class="text-brand-teal w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-slate-800 mb-1">State-of-the-Art Rotary Endodontics</h5>
+                            <p class="text-xs text-slate-500 italic uppercase">Precision Root Canal Treatment</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                       <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm border border-slate-100">
+                            <i data-lucide="check" class="text-brand-teal w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-slate-800 mb-1">Single-Patient Focus</h5>
+                            <p class="text-xs text-slate-500 italic uppercase">Absolute Clinical Hygiene Control</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Banner -->
+    <section class="py-24 px-6">
+        <div class="max-w-5xl mx-auto bg-brand-ink rounded-[4rem] p-12 md:p-20 text-center relative overflow-hidden shadow-2xl">
+            <!-- Decorative circle -->
+            <div class="absolute -top-20 -right-20 w-80 h-80 bg-brand-teal rounded-full opacity-10"></div>
+            
+            <h2 class="text-4xl md:text-6xl font-serif text-white mb-8 italic" data-aos="fade-up">Ready for your best smile?</h2>
+            <p class="text-slate-400 text-lg mb-12 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                Schedule your one-on-one session with Dr. Arora and experience medical dedication firsthand.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6" data-aos="fade-up" data-aos-delay="200">
+                <a href="tel:+919811000000" class="px-10 py-5 bg-brand-teal text-white rounded-2xl font-bold hover:bg-brand-teal/90 transition-all flex items-center gap-3">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                    Call for Appointment
+                </a>
+                <div class="text-white">
+                    <div class="text-xs uppercase tracking-widest text-slate-500 mb-1">Clinic Address</div>
+                    <div class="text-sm font-medium">C-46/A, Chanakya Place, Opp. C1 Janakpuri DDA Flats</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 px-6 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+            <div class="flex flex-col items-center md:items-start gap-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-brand-teal/10 rounded-lg flex items-center justify-center">
+                        <i data-lucide="shield-check" class="text-brand-teal w-5 h-5"></i>
+                    </div>
+                    <span class="text-xl font-serif font-bold tracking-tight text-brand-teal uppercase">Helix Dent</span>
+                </div>
+                <p class="text-xs text-slate-400 max-w-xs text-center md:text-left">
+                    Professional Dental Surgeon and Implantologist providing world-class care in Uttam Nagar, West Delhi.
+                </p>
+            </div>
+            
+            <div class="flex gap-10">
+                <div class="text-center md:text-left">
+                    <h6 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">Office Hours</h6>
+                    <p class="text-sm font-medium">Mon - Sat: 10:00 AM - 08:00 PM</p>
+                    <p class="text-sm font-medium text-brand-teal italic">Sundays by Appointment</p>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto pt-12 mt-12 border-t border-slate-50 flex justify-between items-center">
+            <p class="text-[10px] text-slate-400 uppercase tracking-[0.2em]">© 2024 Helix Dent by Dr. Arora</p>
+            <div class="flex gap-4">
+                <a href="#" class="w-8 h-8 rounded-full border border-slate-100 flex items-center justify-center text-slate-400 hover:text-brand-teal hover:border-brand-teal transition-all">
+                    <i data-lucide="instagram" class="w-4 h-4"></i>
+                </a>
+                <a href="#" class="w-8 h-8 rounded-full border border-slate-100 flex items-center justify-center text-slate-400 hover:text-brand-teal hover:border-brand-teal transition-all">
+                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Init Lucide Icons
+        lucide.createIcons();
+        
+        // Init AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-out-cubic'
+        });
+
+        // IMAGE LOGGING & FAILOVER SCRIPT
+        // This script tracks if your images are loading correctly.
+        // It provides high-quality Unsplash fallbacks if the local files are missing/corrupt.
+        
+        const imagesToTrack = [
+            { id: 'hero-image', fallback: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1200&auto=format&fit=crop' },
+            { id: 'service-1-img', fallback: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?q=80&w=1200&auto=format&fit=crop' },
+            { id: 'service-2-img', fallback: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=1200&auto=format&fit=crop' },
+            { id: 'service-3-img', fallback: 'https://images.unsplash.com/photo-1460672314991-c19ca093c8af?q=80&w=1200&auto=format&fit=crop' },
+            { id: 'clinic-img', fallback: 'https://images.unsplash.com/photo-1629909613654-28a3a7c4abd4?q=80&w=1200&auto=format&fit=crop' }
+        ];
+
+        imagesToTrack.forEach(imgData => {
+            const el = document.getElementById(imgData.id);
+            if (el) {
+                // Log the start of loading
+                console.log(`[Asset Tracking] Attempting to load: ${el.src}`);
+
+                el.addEventListener('error', function() {
+                    console.error(`[Asset Error] Failed to load local image: ${el.src}. Applying safety fallback.`);
+                    el.src = imgData.fallback;
+                });
+
+                el.addEventListener('load', function() {
+                    if (el.naturalWidth === 0 || el.naturalHeight === 0) {
+                        console.warn(`[Asset Warning] Image ${el.src} loaded but has 0 dimensions. Applying fallback.`);
+                        el.src = imgData.fallback;
+                    } else {
+                        console.log(`[Asset Success] Loaded: ${el.src} (${el.naturalWidth}x${el.naturalHeight})`);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
