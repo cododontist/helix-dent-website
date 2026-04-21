@@ -1,383 +1,380 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import { motion } from "motion/react";
 import { 
   Phone, 
   MessageCircle, 
-  Clock, 
   MapPin, 
-  ShieldCheck, 
-  Sparkles, 
-  Stethoscope,
   ChevronRight,
-  Menu,
-  X,
-  Shield,
-  Activity,
-  Award
+  ShieldCheck,
+  Sparkles,
+  Award,
+  Clock,
+  ArrowRight
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const BRAND_TEAL = "#004D4D";
-const WHATSAPP_NUMBER = "919990078009"; // Placeholder for user replacement
+const WHATSAPP_NUMBER = "919990078009";
 
 export default function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20Helix%20Dent,%20I%20would%20like%20to%20schedule%20a%20consultation%20with%20Dr.%20Arora.`;
 
   const treatments = [
     {
       title: "Painless RCT",
       subtitle: "Root Canal Treatment",
-      description: "Advanced rotary endodontics ensuring your procedure is fast, effective, and completely painless.",
-      imageUrl: "/rct.jpg",
-      tag: "Specialty"
+      description: "Precision rotary endodontics designed for speed, comfort, and absolute preservation of the natural tooth.",
+      image: "/RCT.jpg",
+      tag: "Specialized"
     },
     {
       title: "Dental Implants",
       subtitle: "Permanent Restoration",
-      description: "High-grade titanium implants that look, feel, and function exactly like your natural teeth.",
-      imageUrl: "/implant.jpg",
-      tag: "Permanent"
+      description: "Premium titanium system providing a functional and aesthetic foundation that replicates your natural teeth.",
+      image: "/implant.jpg",
+      tag: "Advanced"
     },
     {
       title: "Aesthetic Fillings",
       subtitle: "Tooth-Coloured",
-      description: "Invisible composite restorations that preserve your smile's natural beauty and strength.",
-      imageUrl: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=1200&auto=format&fit=crop",
-      tag: "Natural"
+      description: "Biocompatible composite resins that seamlessly blend with your enamel for invisible, durable protection.",
+      image: "/fillings.jpg", // Code looks for this in root
+      tag: "Cosmetic"
     }
   ];
 
-  const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20Helix%20Dent,%20I%20would%20like%20to%20consult%20with%20Dr.%20Arora.`;
-
   return (
-    <div className="min-h-screen bg-brand-white selection:bg-brand-teal/10 selection:text-brand-teal flex flex-col">
-      {/* Main Navigation - Ultra Minimal */}
-      <nav className="w-full bg-white border-b border-brand-silver py-4 px-6 md:px-12 flex justify-between items-center sticky top-0 z-50">
-        <div className="flex items-baseline gap-1 group cursor-default">
-          <span className="text-3xl font-black tracking-tighter text-brand-teal">H</span>
-          <span className="text-2xl font-bold tracking-tight text-slate-300 -ml-0.5">elix Dent</span>
-        </div>
-        
-        {/* Top Right Desktop CTAs */}
-        <div className="hidden md:flex items-center gap-4">
-          <a 
-            href="tel:+919990078009" 
-            className="flex items-center gap-2 bg-white border-2 border-brand-teal text-brand-teal px-5 py-2 rounded-full font-bold text-sm hover:bg-teal-50 transition-all border-opacity-50"
-          >
-            <Phone className="w-4 h-4 shrink-0" />
-            <span>Call Now</span>
-          </a>
-          <a 
-            href={whatsappLink} 
-            target="_blank" 
-            rel="noreferrer" 
-            className="flex items-center gap-2 bg-brand-teal text-white px-5 py-2 rounded-full font-bold text-sm shadow-md hover:opacity-90 transition-all"
-          >
-            <MessageCircle className="w-4 h-4 fill-current shrink-0" />
-            <span>Book via WhatsApp</span>
-          </a>
-        </div>
-        
-        {/* Mobile menu toggle */}
-        <button 
-          className="md:hidden text-brand-teal"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? <X /> : <Menu />}
-        </button>
-      </nav>
-
-      {/* Mobile Nav Dropdown */}
-      {isMenuOpen && (
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="md:hidden bg-brand-white border-b border-brand-silver px-6 py-6 sticky top-16 z-50 shadow-sm"
-        >
-          <div className="flex flex-col space-y-4">
-            <a href="#treatments" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold uppercase tracking-widest text-brand-teal">Core Treatments</a>
-            <a href="#location" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold uppercase tracking-widest text-brand-teal">Chanakya Place Location</a>
-            <a 
-              href={whatsappLink}
-              className="bg-brand-teal text-white w-full py-4 rounded-xl flex items-center justify-center font-bold"
-            >
-              Consult via WhatsApp
-            </a>
-          </div>
-        </motion.div>
-      )}
-
-      {/* Hero Section */}
-      <main className="flex-1 flex flex-col md:flex-row-reverse items-center px-6 md:px-12 py-12 md:py-24 max-w-7xl mx-auto w-full gap-16">
-        {/* Hero Text - Now on Right */}
-        <div className="flex-1 space-y-8">
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
-          >
-            <div className="inline-block px-3 py-1 bg-teal-50 border border-teal-200 text-brand-teal text-[10px] font-bold uppercase tracking-widest rounded-full">
-                Private Specialist Practice
-            </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold leading-tight text-slate-900 tracking-tight">
-                Advanced Dental Care.<br />
-                <span className="text-brand-teal">Zero Wait Times.</span>
-            </h1>
-            <p className="text-lg text-slate-600 leading-relaxed max-w-md">
-                Experience precision-driven dentistry focused on 1-on-1 attention with Dr. Abhishek Arora. We combine clinical excellence with empathetic care for lasting oral health.
-            </p>
-            
-            <div className="flex gap-8 pt-4">
-                <div className="flex flex-col">
-                    <span className="text-3xl font-bold text-brand-teal">100%</span>
-                    <span className="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Digital Records</span>
-                </div>
-                <div className="w-px h-10 bg-slate-200"></div>
-                <div className="flex flex-col">
-                    <span className="text-3xl font-bold text-brand-teal">1:1</span>
-                    <span className="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Priority Care</span>
-                </div>
-                <div className="w-px h-10 bg-slate-200"></div>
-                <div className="flex flex-col">
-                    <span className="text-3xl font-bold text-brand-teal">ISO</span>
-                    <span className="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Surgical Safety</span>
-                </div>
-            </div>
-          </motion.div>
-        </div>
-
-        <div className="flex-1 w-full">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="relative rounded-[2.5rem] overflow-hidden border border-brand-silver shadow-card group"
-          >
-            <img 
-              src="https://images.unsplash.com/photo-1445522932250-b00db1103001?q=80&w=1920&auto=format&fit=crop" 
-              alt="Modern minimalist macro of a dental chair setup at Helix Dent." 
-              className="w-full aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-105"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 p-6 bg-white/95 backdrop-blur-sm rounded-2xl border border-white/20 shadow-xl">
-               <p className="text-brand-teal font-extrabold uppercase tracking-widest text-[10px] mb-1">Clinic Floor</p>
-               <p className="text-slate-800 font-bold text-sm leading-tight italic">"Redefining clinical comfort through modern technology."</p>
-            </div>
-          </motion.div>
-        </div>
-      </main>
-
-      {/* Treatment Section */}
-      <section id="treatments" className="px-6 md:px-12 py-16 md:py-24 bg-slate-50/50 border-t border-brand-silver">
-        <div className="max-w-7xl mx-auto space-y-12">
-            <div className="text-center space-y-4">
-              <p className="text-brand-teal font-extrabold uppercase tracking-[0.2em] text-xs">Core Expertise</p>
-              <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">Clinical Specializations</h2>
-            </div>
-            
-            <div className="grid md:grid-cols-3 gap-6">
-              {treatments.map((t, idx) => (
-                <motion.div
-                  key={t.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1, duration: 0.6 }}
-                  className="bg-white rounded-3xl border border-brand-silver shadow-card hover:border-brand-teal transition-all group overflow-hidden"
-                >
-                  <div className="relative aspect-video overflow-hidden">
-                    <img 
-                      src={t.imageUrl} 
-                      alt={t.title} 
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="absolute top-4 left-4">
-                       <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-brand-teal text-[10px] font-bold uppercase tracking-widest rounded-full shadow-sm">
-                          {t.tag}
-                       </span>
-                    </div>
-                  </div>
-                  <div className="p-8 space-y-4">
-                    <div>
-                      <h3 className="text-2xl font-extrabold text-slate-800">{t.title}</h3>
-                      <p className="text-xs font-bold text-slate-400 uppercase tracking-widest italic">{t.subtitle}</p>
-                    </div>
-                    <p className="text-slate-600 text-sm leading-relaxed">{t.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-        </div>
-      </section>
-
-      {/* Meet Your Dentist Section */}
-      <section id="about" className="px-6 md:px-12 py-16 md:py-24 bg-slate-50 border-y border-brand-silver overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
-          <div className="flex-1 w-full max-w-md mx-auto">
-            <div className="relative">
-              <div className="aspect-[4/5] md:aspect-square bg-slate-200 rounded-3xl overflow-hidden border-8 border-white shadow-card relative z-10 group">
-                <img 
-                  src="https://images.unsplash.com/photo-1594824464567-990a2e718641?q=80&w=1200&auto=format&fit=crop" 
-                  alt="Dr. Abhishek Arora in clinical setting" 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-brand-teal/5 rounded-full blur-3xl" />
-            </div>
+    <div className="min-h-screen bg-white text-slate-900 selection:bg-brand-teal selection:text-white">
+      {/* Navigation */}
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? "bg-white/90 backdrop-blur-md py-4 shadow-luxury" : "bg-transparent py-6"}`}>
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+          <div className="flex items-baseline gap-1">
+            <span className="text-3xl font-black tracking-tighter text-brand-teal">H</span>
+            <span className="text-2xl font-bold tracking-tight text-slate-300">elix Dent</span>
           </div>
           
-          <div className="flex-1 space-y-8">
-            <div className="space-y-2">
-              <p className="text-brand-teal font-extrabold uppercase tracking-[0.2em] text-xs">Meet Your Dentist</p>
-              <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">Dr. Abhishek Arora, BDS</h2>
-              <p className="text-lg font-bold text-slate-400 uppercase tracking-widest italic">Dental Surgeon</p>
+          <div className="hidden md:flex items-center gap-8">
+            <a href="#treatments" className="text-xs font-bold uppercase tracking-luxury hover:text-brand-teal transition-colors">Treatments</a>
+            <a href="#location" className="text-xs font-bold uppercase tracking-luxury hover:text-brand-teal transition-colors">Location</a>
+            <a 
+              href="tel:+919990078009" 
+              className="px-6 py-3 border border-brand-teal text-brand-teal rounded-full text-xs font-extrabold uppercase tracking-widest hover:bg-brand-teal hover:text-white transition-all shadow-sm"
+            >
+              Call Clinic
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+        {/* Background Decorative Element */}
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-50 -z-10" />
+        
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-16 md:gap-24">
+          {/* Hero Content - Left */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex-1 space-y-8"
+          >
+            <div className="space-y-4">
+              <span className="inline-block px-4 py-1.5 bg-teal-50 border border-teal-100 text-brand-teal text-[10px] font-bold uppercase tracking-luxury rounded-full">
+                PRIVATE CLINICAL SUITE
+              </span>
+              <h1 className="text-6xl md:text-8xl font-black leading-[0.9] tracking-tighter text-slate-900 uppercase">
+                Redefining <br />
+                <span className="text-brand-teal">Clinical</span> <br />
+                Purity
+              </h1>
             </div>
             
-            <p className="text-lg text-slate-600 leading-relaxed max-w-2xl">
-              Dr. Abhishek Arora founded Helix Dent to redefine the patient experience through a blend of clinical excellence and personalized care. Specializing in restorative and preventive dentistry, he is committed to providing high-precision treatments in a private, focused environment. At Helix Dent, Dr. Arora personally oversees every procedure, ensuring that each patient receives undivided attention and a treatment plan tailored to their unique oral health goals.
+            <p className="text-lg text-slate-500 leading-relaxed max-w-lg font-medium">
+              Experience Bespoke Dentistry. Dr. Abhishek Arora (BDS) provides high-end restorative solutions in an environment defined by focus, hygiene, and zero wait times.
             </p>
             
-            <div className="pt-4">
+            <div className="flex flex-wrap gap-4 pt-4">
               <a 
-                href={whatsappLink} 
-                target="_blank" 
-                rel="noreferrer" 
-                className="inline-flex items-center gap-2 text-brand-teal font-extrabold uppercase tracking-widest text-sm border-b-2 border-brand-teal pb-1 hover:border-slate-300 transition-all"
+                href={whatsappLink}
+                target="_blank"
+                rel="noreferrer"
+                className="bg-brand-teal text-white px-8 py-5 rounded-2xl flex items-center gap-3 font-bold text-sm shadow-luxury hover:scale-[1.02] active:scale-95 transition-all"
               >
-                Schedule a Consultation with Dr. Arora <ChevronRight className="w-4 h-4" />
+                <MessageCircle className="w-5 h-5 fill-current" />
+                <span>Book Priority Appointment</span>
+              </a>
+              
+              <a 
+                href="tel:+919990078009"
+                className="bg-white border border-slate-200 text-slate-800 px-8 py-5 rounded-2xl flex items-center gap-3 font-bold text-sm hover:border-brand-teal transition-all"
+              >
+                <Phone className="w-5 h-5" />
+                <span>Call Clinic</span>
               </a>
             </div>
+          </motion.div>
+
+          {/* Hero Image - Right */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="flex-1 relative group w-full"
+          >
+            <div className="aspect-[4/5] bg-brand-silver rounded-[3rem] overflow-hidden shadow-luxury relative z-10">
+              <img 
+                src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1200&auto=format&fit=crop" 
+                alt="Dr. Abhishek Arora" 
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-teal/20 to-transparent" />
+            </div>
+            
+            {/* Signature Floating Card */}
+            <div className="absolute -bottom-10 -left-10 md:-left-20 bg-white p-8 rounded-3xl shadow-luxury z-20 hidden sm:block border border-slate-100 min-w-[280px]">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 rounded-full bg-teal-50 flex items-center justify-center text-brand-teal">
+                   <ShieldCheck className="w-6 h-6" />
+                </div>
+                <div>
+                   <h3 className="font-extrabold text-sm uppercase tracking-wider">Clinical Safety</h3>
+                   <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">ISO 9001 Protocol</p>
+                </div>
+              </div>
+              <p className="text-xs text-slate-500 font-medium leading-relaxed">
+                "We operate on a single-chair model to ensure absolute sterilization and dedicated clinical focus for every patient."
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Treatments Section */}
+      <section id="treatments" className="bg-slate-50/50 py-24 md:py-32 border-y border-slate-100 relative overflow-hidden">
+        <div className="absolute top-0 left-0 text-[20rem] font-black text-slate-100 transform -translate-y-1/2 -translate-x-1/4 pointer-events-none opacity-50 z-0">
+          CLINIC
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+          <div className="max-w-xl space-y-6 mb-20">
+            <span className="text-brand-teal font-extrabold uppercase tracking-luxury text-[11px] block">Specialist Services</span>
+            <h2 className="text-5xl font-black tracking-tight text-slate-900 font-serif leading-none">High-Precision <br />Dental Solutions.</h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-10">
+            {treatments.map((t, i) => (
+              <motion.div 
+                key={t.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                className="group relative h-[500px] rounded-[2rem] overflow-hidden shadow-luxury border border-white hover:border-brand-teal active:scale-[0.98] transition-all duration-500"
+              >
+                {/* Treatment Image */}
+                <img 
+                  src={t.image} 
+                  alt={t.title} 
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = "https://picsum.photos/seed/" + t.title + "/1200/1800";
+                  }}
+                  referrerPolicy="no-referrer"
+                />
+                
+                {/* Glass Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/10 to-transparent group-hover:from-brand-teal/90 transition-all duration-500" />
+                
+                {/* Content */}
+                <div className="absolute bottom-0 left-0 right-0 p-10 space-y-4">
+                  <div className="space-y-1">
+                    <div className="inline-block px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-[9px] font-bold text-white uppercase tracking-widest border border-white/20 mb-2">
+                      {t.tag}
+                    </div>
+                    <h3 className="text-3xl font-black text-white tracking-tight uppercase leading-none">{t.title}</h3>
+                    <p className="text-[10px] font-bold text-teal-300 uppercase tracking-widest italic">{t.subtitle}</p>
+                  </div>
+                  
+                  <p className="text-sm text-slate-300 font-medium leading-relaxed opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                    {t.description}
+                  </p>
+                  
+                  <div className="pt-2">
+                    <ChevronRight className="text-white w-6 h-6 transform -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* The Helix Standard Section */}
-      <section className="px-6 md:px-12 py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-16">
-            <div className="flex-1 space-y-12">
+      {/* Clinical Excellence / About Section */}
+      <section className="py-24 md:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-20 items-center">
+           <div className="order-2 md:order-1 space-y-12">
               <div className="space-y-4">
-                <p className="text-brand-teal font-extrabold uppercase tracking-[0.2em] text-xs">Hygiene & Tech</p>
-                <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight uppercase">The Helix Standard</h2>
+                 <p className="text-brand-teal font-extrabold uppercase tracking-luxury text-[11px]">The Gold Standard</p>
+                 <h2 className="text-4xl md:text-5xl font-black text-slate-900 uppercase leading-tight">Expertise Meets <br /><span className="text-slate-400">Empathy.</span></h2>
               </div>
               
-              <div className="grid grid-cols-1 gap-8">
-                <div className="flex items-start gap-6 group">
-                  <div className="w-16 h-16 shrink-0 rounded-full bg-brand-white border border-brand-silver flex items-center justify-center text-brand-teal shadow-sm group-hover:scale-110 transition-transform mt-0.5">
-                    <Shield className="w-6 h-6" />
+              <div className="space-y-10">
+                <div className="flex gap-6 group">
+                  <div className="w-16 h-16 shrink-0 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-brand-teal shadow-sm group-hover:bg-brand-teal group-hover:text-white transition-all">
+                    <Award className="w-7 h-7" />
                   </div>
-                  <div className="pt-1">
-                    <h4 className="text-lg font-extrabold text-slate-800 uppercase tracking-widest leading-none mb-2">Advanced Autoclave Sterilization</h4>
-                    <p className="text-sm text-slate-500 leading-relaxed">100% sterile instrument protocols for procedural safety.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-6 group">
-                  <div className="w-16 h-16 shrink-0 rounded-full bg-brand-white border border-brand-silver flex items-center justify-center text-brand-teal shadow-sm group-hover:scale-110 transition-transform mt-0.5">
-                    <Activity className="w-6 h-6" />
-                  </div>
-                  <div className="pt-1">
-                    <h4 className="text-lg font-extrabold text-slate-800 uppercase tracking-widest leading-none mb-2">Minimally Invasive Approach</h4>
-                    <p className="text-sm text-slate-500 leading-relaxed">Preserving maximum natural tooth structure through conservative, precision techniques.</p>
+                  <div className="space-y-1">
+                    <h4 className="font-black text-lg uppercase tracking-wider">Premium Materials</h4>
+                    <p className="text-sm text-slate-500 leading-relaxed font-medium">We exclusively use ISO-certified, biocompatible titanium and composite systems from the world's leading dental manufacturers.</p>
                   </div>
                 </div>
-                
-                <div className="flex items-start gap-6 group">
-                  <div className="w-16 h-16 shrink-0 rounded-full bg-brand-white border border-brand-silver flex items-center justify-center text-brand-teal shadow-sm group-hover:scale-110 transition-transform mt-0.5">
-                    <Award className="w-6 h-6" />
+
+                <div className="flex gap-6 group">
+                  <div className="w-16 h-16 shrink-0 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-brand-teal shadow-sm group-hover:bg-brand-teal group-hover:text-white transition-all">
+                    <Clock className="w-7 h-7" />
                   </div>
-                  <div className="pt-1">
-                    <h4 className="text-lg font-extrabold text-slate-800 uppercase tracking-widest leading-none mb-2">Premium Clinical Materials</h4>
-                    <p className="text-sm text-slate-500 leading-relaxed">Using globally-sourced, high-grade biocompatible materials for lasting health.</p>
+                  <div className="space-y-1">
+                    <h4 className="font-black text-lg uppercase tracking-wider">Dedicated Time</h4>
+                    <p className="text-sm text-slate-500 leading-relaxed font-medium">No overbooking. Every appointment is a dedicated block of time where Dr. Arora focuses solely on your treatment.</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-6 group">
+                  <div className="w-16 h-16 shrink-0 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-brand-teal shadow-sm group-hover:bg-brand-teal group-hover:text-white transition-all">
+                    <Sparkles className="w-7 h-7" />
+                  </div>
+                  <div className="space-y-1">
+                    <h4 className="font-black text-lg uppercase tracking-wider">Digital Precision</h4>
+                    <p className="text-sm text-slate-500 leading-relaxed font-medium">Utilizing advanced imaging and computerized rotary systems to ensure surgical-grade accuracy in every procedure.</p>
                   </div>
                 </div>
               </div>
-            </div>
-            
-            <div className="flex-1 w-full">
-              <div className="relative rounded-3xl overflow-hidden border border-brand-silver shadow-card">
-                 <img 
-                   src="https://images.unsplash.com/photo-1629909615184-74f495363b67?q=80&w=2000&auto=format&fit=crop" 
-                   alt="Professional dental diagnostic instruments at Helix Dent" 
-                   className="w-full aspect-[4/3] object-cover grayscale-[0.05] hover:grayscale-0 transition-all duration-700"
-                   referrerPolicy="no-referrer"
-                 />
-                 <div className="absolute inset-0 bg-brand-teal/5" />
+           </div>
+
+           <div className="order-1 md:order-2">
+              <div className="relative">
+                <div className="aspect-square bg-slate-100 rounded-[3rem] overflow-hidden border-8 border-white shadow-luxury">
+                   <img 
+                     src="/clinic.jpg" 
+                     className="w-full h-full object-cover" 
+                     alt="Clinic Environment"
+                     onError={(e) => {
+                       const target = e.target as HTMLImageElement;
+                       target.src = "https://images.unsplash.com/photo-1629909613654-28a3a7c4abd4?q=80&w=1200&auto=format&fit=crop";
+                     }}
+                     referrerPolicy="no-referrer"
+                   />
+                </div>
+                {/* Decorative teal dot */}
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand-teal/5 rounded-full blur-[100px] -z-10" />
               </div>
-            </div>
-          </div>
+           </div>
         </div>
       </section>
 
       {/* Location Section */}
-      <section id="location" className="px-6 md:px-12 py-16 md:py-24 bg-white border-t border-brand-silver">
-        <div className="max-w-3xl mx-auto space-y-12">
-            <div className="space-y-8 text-center">
-                <div className="space-y-4">
-                  <p className="text-brand-teal font-extrabold uppercase tracking-[0.2em] text-xs">Visit Us</p>
-                  <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 uppercase tracking-tight">Clinical Location</h2>
-                </div>
-                
-                <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
-                    <div className="flex items-start gap-4 text-left">
-                        <MapPin className="w-5 h-5 text-brand-teal mt-1 shrink-0" />
-                        <div>
-                            <p className="font-bold text-slate-800 uppercase tracking-wide">Chanakya Place, Uttam Nagar, Delhi</p>
-                            <p className="text-sm text-slate-500">Doctors Plaza, A 17, 18, Chanakya Place, Uttam Nagar, New Delhi, India</p>
-                        </div>
-                    </div>
-                    <div className="flex items-start gap-4 text-left">
-                        <Clock className="w-5 h-5 text-brand-teal mt-1 shrink-0" />
-                        <div>
-                            <p className="font-bold text-slate-800 uppercase tracking-wide">Walk-ins Welcome & Appointments</p>
-                            <p className="text-sm text-slate-500">Mon - Sat: 11:00 AM - 08:00 PM</p>
-                        </div>
-                    </div>
-                </div>
+      <section id="location" className="py-24 md:py-32 bg-slate-50 border-t border-slate-100">
+        <div className="max-w-4xl mx-auto px-6 text-center space-y-12">
+          <div className="space-y-4">
+             <p className="text-brand-teal font-extrabold uppercase tracking-luxury text-[11px]">Contact & Visit</p>
+             <h2 className="text-4xl md:text-5xl font-black text-slate-900 uppercase">Our Clinical Location</h2>
+             <div className="w-20 h-1 bg-brand-teal mx-auto" />
+          </div>
 
-                <div className="h-80 bg-slate-50 rounded-3xl border border-brand-silver overflow-hidden relative shadow-inner group">
-                    <div className="absolute inset-0 flex items-center justify-center bg-brand-teal/[0.02] group-hover:bg-brand-teal/[0.04] transition-colors">
-                        <div className="text-center space-y-3 p-8">
-                             <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto shadow-sm border border-brand-silver">
-                                <MapPin className="w-6 h-6 text-brand-teal" />
-                             </div>
-                             <p className="text-[10px] font-bold uppercase text-slate-400 tracking-[0.2em]">Google Maps Integration Placeholder</p>
-                             <p className="text-xs text-slate-400 max-w-xs mx-auto">Click to view accurate directions to our Chanakya Place facility.</p>
-                        </div>
-                    </div>
-                    {/* Placeholder for actual iframe */}
-                    <img 
-                      src="https://picsum.photos/seed/clinic-map/1200/800?grayscale&blur=2" 
-                      className="w-full h-full object-cover opacity-20 pointer-events-none" 
-                      alt="Map background"
-                      referrerPolicy="no-referrer"
-                    />
+          <div className="grid md:grid-cols-2 gap-12 text-left bg-white p-12 rounded-[2.5rem] shadow-luxury border border-white">
+            <div className="space-y-6">
+              <div className="flex gap-4 items-start">
+                <MapPin className="w-6 h-6 text-brand-teal shrink-0 mt-1" />
+                <div className="space-y-1">
+                  <h4 className="font-black text-sm uppercase tracking-widest text-slate-400">Address</h4>
+                  <p className="font-bold text-lg text-slate-800 leading-snug">
+                    Doctors Plaza, A 17, 18, Chanakya Place, <br />
+                    Uttam Nagar, New Delhi, India
+                  </p>
+                  <a 
+                    href="https://www.google.com/maps/dir/?api=1&destination=Doctors+Plaza+Uttam+Nagar+Delhi" 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 text-brand-teal font-extrabold text-[11px] uppercase tracking-luxury pt-4 group border-b-2 border-brand-teal"
+                  >
+                    Get Directions <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                  </a>
                 </div>
+              </div>
             </div>
+
+            <div className="space-y-6">
+              <div className="flex gap-4 items-start">
+                <Clock className="w-6 h-6 text-brand-teal shrink-0 mt-1" />
+                <div className="space-y-1">
+                  <h4 className="font-black text-sm uppercase tracking-widest text-slate-400">Consultation Hours</h4>
+                  <p className="font-bold text-lg text-slate-800 leading-snug">
+                    Mon — Sat <br />
+                    11:00 AM — 08:00 PM
+                  </p>
+                  <p className="text-xs text-slate-400 font-bold uppercase tracking-widest pt-4 italic">Prior appointment recommended</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Footer Branding */}
-      <footer className="w-full bg-white border-t border-brand-silver p-8 text-center text-sm text-gray-500">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="flex items-baseline gap-1 group cursor-default">
-              <span className="text-2xl font-black tracking-tighter text-brand-teal">H</span>
-              <span className="text-xl font-bold tracking-tight text-slate-300 -ml-0.5">elix Dent</span>
-            </div>
-          </div>
-          <p className="mb-2 font-bold uppercase tracking-[0.2em] text-[10px] text-slate-400">Painless RCT • Dental Implants • Aesthetic Fillings</p>
-          <p className="text-xs">© 2026 Helix Dent. Professional Care by Dr. Abhishek Arora, BDS.</p>
+      {/* Footer */}
+      <footer className="bg-white py-20 border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-12">
+           <div className="space-y-4 text-center md:text-left">
+              <div className="flex items-baseline gap-1 justify-center md:justify-start">
+                <span className="text-4xl font-black tracking-tighter text-brand-teal">H</span>
+                <span className="text-3xl font-bold tracking-tight text-slate-300">elix Dent</span>
+              </div>
+              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.4em] italic">Precision Dentistry Suite</p>
+           </div>
+           
+           <div className="flex gap-12 text-center md:text-right">
+              <div className="space-y-2">
+                 <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Expert Care</p>
+                 <p className="font-bold text-slate-800">Dr. Abhishek Arora</p>
+              </div>
+              <div className="space-y-2">
+                 <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Connect</p>
+                 <div className="flex gap-4 justify-center md:justify-end">
+                    <a href={whatsappLink} className="text-brand-teal hover:scale-110 transition-transform"><MessageCircle className="w-5 h-5 fill-current" /></a>
+                    <a href="tel:+919990078009" className="text-brand-teal hover:scale-110 transition-transform"><Phone className="w-5 h-5" /></a>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <div className="max-w-7xl mx-auto px-6 md:px-12 pt-20 text-center">
+            <p className="text-slate-300 text-[10px] font-bold uppercase tracking-[0.2em]">© 2026 Helix Dent. Professional clinical services by clinical head Dr. Abhishek Arora, BDS.</p>
         </div>
       </footer>
+
+      {/* WhatsApp Floating Button */}
+      <motion.a 
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 1, duration: 0.5, type: "spring" }}
+        href={whatsappLink}
+        target="_blank"
+        rel="noreferrer"
+        className="fixed bottom-8 right-8 z-[100] w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-luxury hover:scale-110 active:scale-95 transition-all group"
+      >
+        <MessageCircle className="w-8 h-8 fill-current" />
+        <div className="absolute right-20 bg-white text-slate-900 border border-slate-100 py-3 px-6 rounded-2xl shadow-luxury whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all pointer-events-none hidden md:block">
+           <p className="text-xs font-black uppercase tracking-widest">Connect with Dr. Arora</p>
+        </div>
+      </motion.a>
     </div>
   );
 }
