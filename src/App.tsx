@@ -31,21 +31,21 @@ export default function App() {
       title: "Painless RCT",
       subtitle: "Root Canal Treatment",
       description: "Precision rotary endodontics designed for speed, comfort, and absolute preservation of the natural tooth.",
-      image: "/RCT.jpg",
+      image: "RCT.jpg",
       tag: "Specialized"
     },
     {
       title: "Dental Implants",
       subtitle: "Permanent Restoration",
       description: "Premium titanium system providing a functional and aesthetic foundation that replicates your natural teeth.",
-      image: "/implant.jpg",
+      image: "implant.jpg",
       tag: "Advanced"
     },
     {
       title: "Aesthetic Fillings",
       subtitle: "Tooth-Coloured",
       description: "Biocompatible composite resins that seamlessly blend with your enamel for invisible, durable protection.",
-      image: "/fillings.jpg", // Code looks for this in root
+      image: "fillings.jpg",
       tag: "Cosmetic"
     }
   ];
@@ -140,7 +140,7 @@ export default function App() {
           >
             <div className="aspect-[4/5] bg-brand-silver rounded-[3rem] overflow-hidden shadow-luxury relative z-10">
               <img 
-                src="/doctor.jpg" 
+                src="doctor.jpg" 
                 alt="Dr. Abhishek Arora" 
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                 onError={(e) => {
@@ -278,7 +278,7 @@ export default function App() {
               <div className="relative">
                 <div className="aspect-square bg-slate-100 rounded-[3rem] overflow-hidden border-8 border-white shadow-luxury">
                    <img 
-                     src="/clinic.jpg" 
+                     src="clinic.jpg" 
                      className="w-full h-full object-cover" 
                      alt="Clinic Environment"
                      onError={(e) => {
