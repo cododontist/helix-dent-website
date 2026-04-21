@@ -60,12 +60,21 @@ export default function App() {
             <span className="text-2xl font-bold tracking-tight text-slate-300">elix Dent</span>
           </div>
           
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#treatments" className="text-xs font-bold uppercase tracking-luxury hover:text-brand-teal transition-colors">Treatments</a>
-            <a href="#location" className="text-xs font-bold uppercase tracking-luxury hover:text-brand-teal transition-colors">Location</a>
+          <div className="hidden md:flex items-center gap-6">
+            <a href="#treatments" className="text-xs font-bold uppercase tracking-luxury hover:text-brand-teal transition-colors py-2">Treatments</a>
+            <a href="#location" className="text-xs font-bold uppercase tracking-luxury hover:text-brand-teal transition-colors py-2 mr-4">Location</a>
+            <a 
+              href={whatsappLink}
+              target="_blank"
+              rel="noreferrer"
+              className="px-6 py-3 bg-brand-teal text-white rounded-full text-[10px] font-extrabold uppercase tracking-widest hover:bg-slate-900 transition-all shadow-luxury flex items-center gap-2"
+            >
+              <MessageCircle className="w-3.5 h-3.5 fill-current" />
+              <span>Book via WhatsApp</span>
+            </a>
             <a 
               href="tel:+919990078009" 
-              className="px-6 py-3 border border-brand-teal text-brand-teal rounded-full text-xs font-extrabold uppercase tracking-widest hover:bg-brand-teal hover:text-white transition-all shadow-sm"
+              className="px-6 py-3 border border-brand-teal text-brand-teal rounded-full text-[10px] font-extrabold uppercase tracking-widest hover:bg-brand-teal hover:text-white transition-all shadow-sm"
             >
               Call Clinic
             </a>
@@ -109,7 +118,7 @@ export default function App() {
                 className="bg-brand-teal text-white px-8 py-5 rounded-2xl flex items-center gap-3 font-bold text-sm shadow-luxury hover:scale-[1.02] active:scale-95 transition-all"
               >
                 <MessageCircle className="w-5 h-5 fill-current" />
-                <span>Book Priority Appointment</span>
+                <span>Book via WhatsApp</span>
               </a>
               
               <a 
@@ -131,9 +140,13 @@ export default function App() {
           >
             <div className="aspect-[4/5] bg-brand-silver rounded-[3rem] overflow-hidden shadow-luxury relative z-10">
               <img 
-                src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1200&auto=format&fit=crop" 
+                src="/doctor.jpg" 
                 alt="Dr. Abhishek Arora" 
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1200&auto=format&fit=crop";
+                }}
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-teal/20 to-transparent" />
