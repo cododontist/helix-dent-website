@@ -113,7 +113,7 @@ export default function App() {
             <div className="flex flex-wrap gap-4 pt-4">
               <a 
                 href={whatsappLink}
-                target="_blank
+                target="_blank"
                 rel="noreferrer"
                 className="bg-brand-teal text-white px-8 py-5 rounded-2xl flex items-center gap-3 font-bold text-sm shadow-luxury hover:scale-[1.02] active:scale-95 transition-all"
               >
